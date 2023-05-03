@@ -117,9 +117,25 @@ public class userLogIn2 extends AppCompatActivity {
                                         if (!task.getResult().isEmpty()) {
                                             Toast.makeText(userLogIn2.this, "Ese nombre de usuario ya fue tomado", Toast.LENGTH_SHORT).show();
                                         } else {
-                                            // TODO: completar aqui
+                                            Map<String, Object> datosNuevos = new HashMap<>();
+                                            datosNuevos.put("username", username);
+                                            datosNuevos.put("name", name);
+                                            datosNuevos.put("password", password);
+                                            db.collection("users")
+                                                    .document(idUser)
+                                                    .update(datosNuevos)
+                                                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                                        @Override
+                                                        public void onSuccess(Void unused) {
+                                                            Toast.makeText(userLogIn2.this, "Datos actualizados", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }).addOnFailureListener(new OnFailureListener() {
+                                                        @Override
+                                                        public void onFailure(@NonNull Exception e) {
+                                                            Toast.makeText(userLogIn2.this, "Error al cambiar los datos", Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    });
                                         }
-
                                     }
                                 }
                             });
