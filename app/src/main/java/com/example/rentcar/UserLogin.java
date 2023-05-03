@@ -4,6 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.HashMap;
@@ -27,6 +29,7 @@ public class UserLogin extends AppCompatActivity {
     EditText editName;
     EditText editPassword;
     Button btnAdd, btnSearch, btnLogIn;
+    String idUserFound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,6 +94,36 @@ public class UserLogin extends AppCompatActivity {
                             }
                         });
                 
+            }
+        });
+
+        btnSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String name = editName.getText().toString();
+                if (name.isEmpty()) {
+                    Toast.makeText(UserLogin.this, "Debes escribir el nombre del usuario para buscarlos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                db.collection("users")
+                        .whereEqualTo("name", name)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    if (!task.getResult().isEmpty()) {
+                                        for (QueryDocumentSnapshot document : task.getResult()) {
+                                            idUserFound = document.getId();
+                                            editEmail.setText(document.getString("email"));
+                                        }
+                                    } else {
+                                        Toast.makeText(UserLogin.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
+                                    }
+                                }
+                            }
+                        });
             }
         });
     }
