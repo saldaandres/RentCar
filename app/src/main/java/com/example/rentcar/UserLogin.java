@@ -3,6 +3,7 @@ package com.example.rentcar;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -30,6 +31,7 @@ public class UserLogin extends AppCompatActivity {
     EditText editPassword;
     Button btnAdd, btnSearch, btnLogIn;
     String idUserFound;
+    String passwordActual;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -116,12 +118,60 @@ public class UserLogin extends AppCompatActivity {
                                     if (!task.getResult().isEmpty()) {
                                         for (QueryDocumentSnapshot document : task.getResult()) {
                                             idUserFound = document.getId();
-                                            editEmail.setText(document.getString("email"));
+                                            editEmail.setText(document.getString("username"));
                                         }
                                     } else {
                                         Toast.makeText(UserLogin.this, "El usuario no existe", Toast.LENGTH_SHORT).show();
                                     }
                                 }
+                            }
+                        });
+            }
+        });
+
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = editEmail.getText().toString();
+                String name = editName.getText().toString();
+                String password = editPassword.getText().toString();
+
+                db.collection("users")
+                        .whereEqualTo("name", name)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    if (task.getResult().isEmpty()) {
+                                        Toast.makeText(UserLogin.this, "Usuario no existe", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        idUserFound = document.getId();
+                                        passwordActual = document.getString("password");
+                                    }
+
+                                    if (!password.equals(passwordActual)) {
+                                        Toast.makeText(UserLogin.this, "Contraseña invalida", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+
+                                    Intent intent = new Intent(UserLogin.this, userLogIn2.class);
+                                    intent.putExtra("username", email);
+                                    intent.putExtra("name", name);
+                                    intent.putExtra("password", password);
+                                    intent.putExtra("idUser", idUserFound);
+                                    Toast.makeText(UserLogin.this, "Redireccionando a tu Pagina Principal", Toast.LENGTH_SHORT).show();
+                                    startActivity(intent);
+                                }
+                            }
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(UserLogin.this, "Algo salió mal", Toast.LENGTH_SHORT).show();
                             }
                         });
             }

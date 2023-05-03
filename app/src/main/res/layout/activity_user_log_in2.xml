@@ -18,10 +18,21 @@
         android:layout_gravity="center"
         android:text="Usuario Logueado" />
 
+    <ImageButton
+        android:id="@+id/imageButtonPencil"
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/ic_baseline_edit_24"
+        android:layout_gravity="center"
+        android:backgroundTint="@color/teal_700"
+        android:outlineSpotShadowColor="@color/white"
+        />
+
     <LinearLayout
-        android:layout_marginTop="30dp"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginTop="30dp"
         android:orientation="vertical">
 
 
@@ -29,65 +40,65 @@
             android:id="@+id/editTextEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColorHint="@color/white"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Correo electronico"
             android:inputType="textEmailAddress"
-            android:hint="Correo electronico"/>
+            android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/editTextName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColorHint="@color/white"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Nombre"
             android:inputType="textPersonName"
-            android:hint="Nombre"/>
+            android:textColorHint="@color/white" />
 
         <EditText
             android:id="@+id/editTextPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textColorHint="@color/white"
             android:ems="10"
+            android:gravity="center"
+            android:hint="Contraseña"
             android:inputType="textPassword"
-            android:hint="Contraseña"/>
+            android:textColorHint="@color/white" />
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="horizontal"
-        android:padding="20dp">
-
-
-        <Button
-            android:id="@+id/buttonEdit"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:backgroundTint="@color/teal_700"
-            android:text="Editar" />
-
-        <Button
-            android:id="@+id/buttonDelete"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="@color/teal_700"
-            android:text="Eliminar" />
-
-        <Button
-            android:id="@+id/buttonRentCar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="20dp"
-            android:backgroundTint="@color/teal_700"
-            android:text="Rentar vehiculo" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="20dp">
 
 
-    </LinearLayout>
+            <Button
+                android:id="@+id/buttonEdit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/teal_700"
+                android:text="Editar" />
+
+            <Button
+                android:id="@+id/buttonDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="Eliminar" />
+
+            <Button
+                android:id="@+id/buttonRentCar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="Rentar vehiculo" />
+
+
+        </LinearLayout>
 
     </LinearLayout>
 
