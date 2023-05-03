@@ -144,6 +144,26 @@ public class userLogIn2 extends AppCompatActivity {
             }
         });
 
+        btnDelete.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.collection("users")
+                        .document(idUser)
+                        .delete()
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void unused) {
+                                Toast.makeText(userLogIn2.this, "Has eliminado tu usuario", Toast.LENGTH_SHORT).show();
+                            }
+                        }).addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                Toast.makeText(userLogIn2.this, "No hemos podido borrarte", Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                finish();
+            }
+        });
 
     }
 }
