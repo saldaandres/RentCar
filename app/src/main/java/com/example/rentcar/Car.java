@@ -42,17 +42,15 @@ public class Car extends AppCompatActivity {
         btnSave.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String stringPlaca = editPlaca.getText().toString();
+                String placa = editPlaca.getText().toString();
                 String marca = editMarca.getText().toString();
                 String estado = editEstado.getText().toString();
 
                 // chequear que los datos no estén vacios
-                if (stringPlaca.isEmpty() || marca.isEmpty() || estado.isEmpty()) {
+                if (placa.isEmpty() || marca.isEmpty() || estado.isEmpty()) {
                     Toast.makeText(Car.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
                     return;
                 }
-
-                int placa = Integer.parseInt(stringPlaca);
 
                 // chequear que el dato ESTADO sea un valor aceptado
                 if (!estado.equalsIgnoreCase("disponible") && !estado.equalsIgnoreCase("no disponible")) {

@@ -165,5 +165,14 @@ public class userLogIn2 extends AppCompatActivity {
             }
         });
 
+        btnRent.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intentRentar = new Intent(getApplicationContext(), Rent.class);
+                intentRentar.putExtra("username", usernameActual);
+                startActivity(intentRentar);
+            }
+        });
+
     }
 }
