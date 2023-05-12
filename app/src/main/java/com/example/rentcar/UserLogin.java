@@ -29,7 +29,10 @@ public class UserLogin extends AppCompatActivity {
     EditText editEmail;
     EditText editName;
     EditText editPassword;
-    Button btnAdd, btnSearch, btnLogIn;
+    Button btnAdd;
+    Button btnSearch;
+    Button btnLogIn;
+    Button btnList;
     String idUserFound;
     String passwordActual;
 
@@ -45,6 +48,14 @@ public class UserLogin extends AppCompatActivity {
         btnAdd = findViewById(R.id.buttonAdd);
         btnSearch = findViewById(R.id.buttonSearch);
         btnLogIn = findViewById(R.id.buttonLogIn);
+        btnList = findViewById(R.id.buttonListar);
+
+        btnList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), ListUsers.class));
+            }
+        });
 
         btnAdd.setOnClickListener(new View.OnClickListener() {
             @Override
