@@ -2,17 +2,21 @@ package com.example.rentcar;
 
 public class User {
     private String name;
-    private String username;
+    private String email;
     private String password;
+    // el rol es 1 para admin y 0 para usuarios
+    private int role;
+    private String reserveword;
 
     public User() {
-
     }
 
-    public User(String name, String username, String password) {
+    public User(String name, String email, String password, int role, String reserveword) {
         this.name = name;
-        this.username = username;
+        this.email = email;
         this.password = password;
+        this.role = role;
+        this.reserveword = reserveword;
     }
 
     public String getName() {
@@ -23,12 +27,12 @@ public class User {
         this.name = name;
     }
 
-    public String getUsername() {
-        return username;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPassword() {
@@ -37,5 +41,21 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getRole() {
+        return role;
+    }
+
+    public void setRole(int role) {
+        this.role = role;
+    }
+
+    public String getReserveword() {
+        return reserveword;
+    }
+
+    public void setReserveword(String reserveword) {
+        this.reserveword = reserveword;
     }
 }

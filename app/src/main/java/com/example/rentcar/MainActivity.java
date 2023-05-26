@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnCars.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), Car.class);
+                Intent intent = new Intent(getApplicationContext(), CrudCar.class);
                 startActivity(intent);
             }
         });

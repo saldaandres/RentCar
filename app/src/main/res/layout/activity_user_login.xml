@@ -17,7 +17,7 @@
         android:textColor="@color/white"
         android:textSize="30dp"
         android:layout_gravity="center"
-        android:text="Usuarios" />
+        android:text="Inicio de Sesion" />
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -38,17 +38,6 @@
             android:inputType="textEmailAddress"
             android:hint="Correo electronico"/>
 
-        <EditText
-            android:id="@+id/editTextName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:textSize="30dp"
-            android:textColor="@color/white"
-            android:textColorHint="@color/white"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:hint="Nombre"/>
 
         <EditText
             android:id="@+id/editTextPassword"
@@ -75,15 +64,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/teal_700"
-                android:text="Agregar" />
-
-            <Button
-                android:id="@+id/buttonSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="20dp"
-                android:backgroundTint="@color/teal_700"
-                android:text="Buscar" />
+                android:text="Registrate" />
 
             <Button
                 android:id="@+id/buttonLogIn"
@@ -91,7 +72,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
                 android:backgroundTint="@color/teal_700"
-                android:text="Ingresar" />
+                android:text="Iniciar Sesion" />
 
 
         </LinearLayout>
@@ -105,11 +86,11 @@
 
 
             <Button
-                android:id="@+id/buttonListar"
+                android:id="@+id/buttonForgotPassword"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:backgroundTint="@color/teal_700"
-                android:text="Listar" />
+                android:text="¿Olvidaste la contraseña?" />
 
         </LinearLayout>
 

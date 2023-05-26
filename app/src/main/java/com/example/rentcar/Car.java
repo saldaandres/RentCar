@@ -1,101 +1,50 @@
 package com.example.rentcar;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
+public class Car {
+    private String plateNumber;
+    private String brand;
+    private int state;
+    private int dailyValue;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+    public Car() {
+    }
 
-import com.google.android.gms.tasks.OnCompleteListener;
-import com.google.android.gms.tasks.OnFailureListener;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.firestore.DocumentReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QuerySnapshot;
+    public Car(String plateNumber, String brand, int state, int dailyValue) {
+        this.plateNumber = plateNumber;
+        this.brand = brand;
+        this.state = state;
+        this.dailyValue = dailyValue;
+    }
 
-import java.util.HashMap;
-import java.util.Map;
+    public String getPlateNumber() {
+        return plateNumber;
+    }
 
-public class Car extends AppCompatActivity {
-    FirebaseFirestore db = FirebaseFirestore.getInstance();
+    public void setPlateNumber(String plateNumber) {
+        this.plateNumber = plateNumber;
+    }
 
-    EditText editPlaca;
-    EditText editMarca;
-    EditText editEstado;
-    Button btnSave;
+    public String getBrand() {
+        return brand;
+    }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_car);
-        getSupportActionBar().hide();
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
 
-        editPlaca = findViewById(R.id.editTextPlate);
-        editMarca = findViewById(R.id.editTextBrand);
-        editEstado = findViewById(R.id.editTextState);
-        btnSave = findViewById(R.id.buttonSave);
+    public int getState() {
+        return state;
+    }
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String placa = editPlaca.getText().toString();
-                String marca = editMarca.getText().toString();
-                String estado = editEstado.getText().toString();
+    public void setState(int state) {
+        this.state = state;
+    }
 
-                // chequear que los datos no estén vacios
-                if (placa.isEmpty() || marca.isEmpty() || estado.isEmpty()) {
-                    Toast.makeText(Car.this, "Debes rellenar todos los campos", Toast.LENGTH_SHORT).show();
-                    return;
-                }
+    public int getDailyValue() {
+        return dailyValue;
+    }
 
-                // chequear que el dato ESTADO sea un valor aceptado
-                if (!estado.equalsIgnoreCase("disponible") && !estado.equalsIgnoreCase("no disponible")) {
-                    Toast.makeText(Car.this, "El estado debe ser 'disponible' o 'no disponible'", Toast.LENGTH_SHORT).show();
-                    return;
-                }
-
-                // buscar si el carro ya existe
-                db.collection("cars")
-                        .whereEqualTo("platenumber", placa)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (task.isSuccessful()) {
-                                    if (task.getResult().isEmpty()) {
-                                        // aqui podemos añadir el carro
-                                        Map<String, Object> nuevoCarro = new HashMap<>();
-                                        nuevoCarro.put("brand", marca);
-                                        nuevoCarro.put("platenumber", placa);
-                                        nuevoCarro.put("state", estado);
-
-                                        db.collection("cars")
-                                                .add(nuevoCarro)
-                                                .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
-                                                    @Override
-                                                    public void onSuccess(DocumentReference documentReference) {
-                                                        Toast.makeText(Car.this, "Vehículo añadido", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                })
-                                                .addOnFailureListener(new OnFailureListener() {
-                                                    @Override
-                                                    public void onFailure(@NonNull Exception e) {
-                                                        Toast.makeText(Car.this, "No hemos podido añadir el vehículo", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                    } else {
-                                        Toast.makeText(Car.this, "Esta placa ya existe en la base de datos", Toast.LENGTH_SHORT).show();
-                                    }
-                                }
-                            }
-                        });
-            }
-        });
-
-
+    public void setDailyValue(int dailyValue) {
+        this.dailyValue = dailyValue;
     }
 }

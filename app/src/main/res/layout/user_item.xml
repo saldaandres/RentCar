@@ -1,64 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="200dp"
+    app:cardCornerRadius="4dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
 
 
-    <androidx.cardview.widget.CardView
-        android:id="@+id/card_view"
-        android:layout_gravity="center"
-        app:cardCornerRadius="5dp"
-        android:layout_marginTop="5dp"
-        android:elevation="2dp"
-        android:background="@color/cardBackground"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" >
 
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
 
             <ImageView
                 android:id="@+id/imageView"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
-                android:scaleType="fitCenter"
-                android:layout_margin="15dp"
-                android:src="@drawable/ic_baseline_person_pin_24"
-                 />
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_baseline_person_pin_24" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/textCardNombre"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/textCardNombre"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Nombre: "
-                    android:layout_margin="10dp"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:layout_height="wrap_content"
+                android:layout_toEndOf="@+id/imageView"
+                android:layout_alignParentTop="true"
+                android:layout_margin="10dp"
                     />
 
                 <TextView
                     android:id="@+id/textCardCorreo"
-                    android:layout_width="match_parent"
+                    android:textAppearance="@style/TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_below="@+id/textCardNombre"
+                    android:layout_alignLeft="@+id/textCardNombre"
                     android:text="Correo: "
-                    android:layout_margin="10dp"
                     />
 
-            </LinearLayout>
-
-        </LinearLayout>
-
-    </androidx.cardview.widget.CardView>
+        </RelativeLayout>
 
 
-</LinearLayout>
+</androidx.cardview.widget.CardView>
