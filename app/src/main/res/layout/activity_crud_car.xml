@@ -13,9 +13,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:textColor="@color/white"
-        android:textSize="30dp"
+        android:textSize="40dp"
         android:layout_gravity="center"
-        android:text="CAR" />
+        android:text="Administrar Carros" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -32,8 +32,8 @@
             android:textSize="30dp"
             android:textColor="@color/white"
             android:gravity="center"
-            android:hint="Numero de Placa"
-            android:inputType="number"
+            android:hint="Placa"
+            android:inputType="text"
             android:textColorHint="@color/white" />
 
         <EditText
@@ -57,7 +57,19 @@
             android:textColor="@color/white"
             android:gravity="center"
             android:hint="Estado"
-            android:inputType="text"
+            android:inputType="number"
+            android:textColorHint="@color/white" />
+
+        <EditText
+            android:id="@+id/editTextDailyValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:textSize="30dp"
+            android:textColor="@color/white"
+            android:gravity="center"
+            android:hint="Valor Diario"
+            android:inputType="number"
             android:textColorHint="@color/white" />
 
         <LinearLayout
@@ -75,6 +87,40 @@
                 android:layout_marginStart="20dp"
                 android:backgroundTint="@color/teal_700"
                 android:text="Guardar" />
+
+            <Button
+                android:id="@+id/buttonDelete"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="Eliminar" />
+
+            <Button
+                android:id="@+id/buttonBuscar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="Buscar" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="10dp">
+
+
+            <Button
+                android:id="@+id/buttonEditar"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:backgroundTint="@color/teal_700"
+                android:text="Editar" />
 
         </LinearLayout>
     </LinearLayout>

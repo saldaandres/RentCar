@@ -1,27 +1,27 @@
 package com.example.rentcar;
 
 public class Car {
-    private String plateNumber;
+    private String platenumber;
     private String brand;
     private int state;
-    private int dailyValue;
+    private int dailyvalue;
 
     public Car() {
     }
 
     public Car(String plateNumber, String brand, int state, int dailyValue) {
-        this.plateNumber = plateNumber;
+        this.platenumber = plateNumber;
         this.brand = brand;
         this.state = state;
-        this.dailyValue = dailyValue;
+        this.dailyvalue = dailyValue;
     }
 
-    public String getPlateNumber() {
-        return plateNumber;
+    public String getPlatenumber() {
+        return platenumber;
     }
 
-    public void setPlateNumber(String plateNumber) {
-        this.plateNumber = plateNumber;
+    public void setPlatenumber(String platenumber) {
+        this.platenumber = platenumber;
     }
 
     public String getBrand() {
@@ -40,11 +40,11 @@ public class Car {
         this.state = state;
     }
 
-    public int getDailyValue() {
-        return dailyValue;
+    public int getDailyvalue() {
+        return dailyvalue;
     }
 
-    public void setDailyValue(int dailyValue) {
-        this.dailyValue = dailyValue;
+    public void setDailyvalue(int dailyvalue) {
+        this.dailyvalue = dailyvalue;
     }
 }

@@ -57,5 +57,50 @@ public class UserLogin extends AppCompatActivity {
             }
         });
 
+        btnLogIn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String email = editEmail.getText().toString();
+                String password = editPassword.getText().toString();
+
+                if (email.isEmpty() || password.isEmpty())  {
+                    Toast.makeText(UserLogin.this, "Debes llenar todos los campos", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                db.collection("users")
+                        .whereEqualTo("email", email)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+                            @Override
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (task.isSuccessful()) {
+                                    if (task.getResult().isEmpty()) {
+                                        Toast.makeText(UserLogin.this, "Este usuario no existe", Toast.LENGTH_SHORT).show();
+                                        return;
+                                    }
+                                    for (QueryDocumentSnapshot document : task.getResult()) {
+                                        User usuarioEncontrado = document.toObject(User.class);
+                                        String passwordUsuarioEncontrado = usuarioEncontrado.getPassword();
+                                        if (!password.equals(passwordUsuarioEncontrado)){
+                                            Toast.makeText(UserLogin.this, "Contraseña incorrecta", Toast.LENGTH_SHORT).show();
+                                            return;
+                                        }
+                                        int role = usuarioEncontrado.getRole();
+                                        if (role == 0) {
+                                            Intent intentUser = new Intent(getApplicationContext(), RentCar.class);
+                                            intentUser.putExtra("email", usuarioEncontrado.getEmail());
+                                            startActivity(intentUser);
+                                            return;
+                                        }
+                                        startActivity(new Intent(getApplicationContext(), CrudCar.class));
+                                    }
+                                }
+                            }
+                        });
+
+            }
+        });
+
     }
 }
