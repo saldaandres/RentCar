@@ -1,8 +1,8 @@
 package com.example.rentcar;
 
 public class Rent {
-    private int rentNumber;
-    private String userName;
+    private long rentNumber;
+    private String email;
     private String plateNumber;
     private String initialDate;
     private String finalDate;
@@ -11,29 +11,29 @@ public class Rent {
     public Rent() {
     }
 
-    public Rent(int rentNumber, String userName, String plateNumber, String initialDate, String finalDate, int status) {
+    public Rent(long rentNumber, String email, String plateNumber, String initialDate, String finalDate, int status) {
         this.rentNumber = rentNumber;
-        this.userName = userName;
+        this.email = email;
         this.plateNumber = plateNumber;
         this.initialDate = initialDate;
         this.finalDate = finalDate;
         this.status = status;
     }
 
-    public int getRentNumber() {
+    public long getRentNumber() {
         return rentNumber;
     }
 
-    public void setRentNumber(int rentNumber) {
+    public void setRentNumber(long rentNumber) {
         this.rentNumber = rentNumber;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getEmail() {
+        return email;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPlateNumber() {
