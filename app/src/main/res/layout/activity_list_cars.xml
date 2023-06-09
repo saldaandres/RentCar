@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/cardview_dark_background"
-    tools:context=".ListUsers">
+    tools:context=".ListCars">
 
     <TextView
         android:id="@+id/textView2"
@@ -21,7 +21,7 @@
         android:layout_gravity="center"
         android:textColor="@color/white"
         android:textAlignment="center"
-        android:text="Lista de Usuarios" />
+        android:text="Lista de Carros" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerViewUserList"

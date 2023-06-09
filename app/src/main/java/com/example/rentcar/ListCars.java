@@ -16,39 +16,40 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 
-public class ListUsers extends AppCompatActivity {
-    RecyclerView userRecycler;
-    ArrayList<User> users;
+public class ListCars extends AppCompatActivity {
+    RecyclerView carRecycler;
+    ArrayList<Car> cars;
     FirebaseFirestore database = FirebaseFirestore.getInstance();
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_list_users);
+        setContentView(R.layout.activity_list_cars);
         getSupportActionBar().hide();
-        userRecycler = findViewById(R.id.recyclerViewUserList);
-        users = new ArrayList<>();
-        userRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
-        userRecycler.setHasFixedSize(true);
+        carRecycler = findViewById(R.id.recyclerViewUserList);
+        cars = new ArrayList<>();
+        carRecycler.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+        carRecycler.setHasFixedSize(true);
 
         // cargar los datos de firestore
-        loadUsers();
+        loadCars();
     }
 
-    private void loadUsers() {
-        database.collection("users")
+    private void loadCars() {
+        database.collection("cars")
+                .whereEqualTo("state", 0)
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
                         if (task.isSuccessful()){
                             for (QueryDocumentSnapshot document : task.getResult()) {
-                                User usuario = document.toObject(User.class);
-                                users.add(usuario);
+                                Car carro= document.toObject(Car.class);
+                                cars.add(carro);
                             }
-                            UserAdapter adaptador = new UserAdapter(users);
-                            userRecycler.setAdapter(adaptador);
+                            CardAdapter adaptador = new CardAdapter(cars);
+                            carRecycler.setAdapter(adaptador);
                             return;
                         }
                         Log.w("", "Error recuperando los documentos.", task.getException());

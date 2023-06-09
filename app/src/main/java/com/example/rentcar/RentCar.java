@@ -39,6 +39,7 @@ public class RentCar extends AppCompatActivity implements AdapterView.OnItemSele
     Button btnFechaFinal;
     Button btnGuardar;
     Button btnReturnCar;
+    //Button btnListCars;
     TextView tvRentNumber;
     String placaSeleccionada;
     ArrayList<String> placasDisponibles = new ArrayList<>();
@@ -58,6 +59,7 @@ public class RentCar extends AppCompatActivity implements AdapterView.OnItemSele
         btnGuardar = findViewById(R.id.buttonGuardar);
         btnFechaFinal = findViewById(R.id.buttonFechaFinal);
         tvRentNumber = findViewById(R.id.textViewRentNumber);
+        //btnListCars = findViewById(R.id.buttonListar);
         final long[] rentNumber = new long[1];
         email = getIntent().getStringExtra("email");
         btnReturnCar = findViewById(R.id.buttonReturnCar);

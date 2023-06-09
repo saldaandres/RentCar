@@ -1,20 +1,20 @@
 package com.example.rentcar;
 
 public class Return {
-    private int returnNumber;
-    private int rentNumber;
+    private long returnNumber;
+    private long rentNumber;
     private String returnDate;
 
     public Return() {
     }
 
-    public Return(int returnNumber, int rentNumber, String returnDate) {
+    public Return(long returnNumber, long rentNumber, String returnDate) {
         this.returnNumber = returnNumber;
         this.rentNumber = rentNumber;
         this.returnDate = returnDate;
     }
 
-    public int getReturnNumber() {
+    public long getReturnNumber() {
         return returnNumber;
     }
 
@@ -22,7 +22,7 @@ public class Return {
         this.returnNumber = returnNumber;
     }
 
-    public int getRentNumber() {
+    public long getRentNumber() {
         return rentNumber;
     }
 
